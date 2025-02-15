@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form submit
     document.getElementById('customerForm').addEventListener('submit', (e) => {
         e.preventDefault();
+        
+        console.log(customers);
         const customerId = document.getElementById('customerId').value;
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
