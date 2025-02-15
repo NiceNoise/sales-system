@@ -1,0 +1,84 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #a8d8ea;
+    --secondary-color: #aa96da;
+    --success-color: #aed581;
+    --danger-color: #ff8a80;
+    --background-color: black;
+    --text-color: #5c6b73;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(168, 216, 234, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+}
+
+@media (min-width: 769px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}

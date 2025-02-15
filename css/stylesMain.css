@@ -1,0 +1,149 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sidebar-bg: #f8f9fa;
+    --sidebar-hover: #e9ecef;
+    --primary-color: #a8d8ea;
+    --secondary-color: #aa96da;
+    --text-color: #5c6b73;
+    --border-color: #dee2e6;
+    --background-color : darkgray;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background-color);
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    transition: all 0.3s;
+    border-right: 1px solid var(--border-color);
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: var(--text-color);
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    background: var(--sidebar-hover);
+}
+
+#sidebar ul li.active > a {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+#sidebar ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 40px !important;
+}
+
+#content {
+    width: 100%;
+    padding: 0px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    background: #fff;
+}
+
+#contentFrame {
+    width: 100%;
+    height: calc(100vh - 1px);
+    border: solid 10px var(--border-color);
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        padding: 0px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #sidebar {
+        margin-left: 0px;
+        min-width: 400px;
+        max-width: 400px;
+        
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        padding: 0px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    
+    #sidebar {
+        margin-left: 0px;
+        min-width: 400px;
+        max-width: 400px;
+        
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        padding: 0px;
+    }
+
+}
