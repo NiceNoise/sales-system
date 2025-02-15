@@ -1,43 +1,3 @@
-// Definición de constructores
-function Customer(name, email, phone, address) {
-    this.idCustumer = Date.now(); // Nota: hay un error en el nombre "idCustumer" pero lo mantenemos según los requisitos
-    this.name = name;
-    this.email = email;
-    this.phone = phone;
-    this.date = new Date();
-}
-
-function Seller(name, email, phone, address) {
-    this.idSeller = Date.now(); // Corregido de "idSelle" a "idSeller" para consistencia
-    this.name = name;
-    this.email = email;
-    this.phone = phone;
-    this.date = new Date();
-}
-
-function Product(name, price, stock) {
-    this.idProduct = Date.now();
-    this.name = name;
-    this.price = parseFloat(price);
-    this.stock = parseInt(stock);
-    this.date = new Date();
-}
-
-function Sale(idCustomer, idSeller) {
-    this.idSale = Date.now();
-    this.idSeller = idSeller;
-    this.idCustomer = idCustomer;
-    this.date = new Date();
-}
-
-function ProductSold(idSale, idProduct, unitPrice, quantity) {
-    this.idSale = idSale;
-    this.idProduct = idProduct;
-    this.unitPrice = parseFloat(unitPrice);
-    this.quantity = parseInt(quantity);
-    this.partialAmount = parseFloat(unitPrice * quantity);
-}
-
 // Variables globales
 let customers = [];
 let sellers = [];
@@ -108,13 +68,24 @@ function saveData() {
 
 // Llenar combos con datos
 function populateSelects() {
+
+    // Limpiar opciones existentes excepto la primera
+    while (customerSelect.options.length > 1) {
+        customerSelect.remove(1);
+    }
+
     // Llenar combo de clientes
     customers.forEach(customer => {
         const option = document.createElement('option');
-        option.value = customer.idCustumer;
+        option.value = customer.idCustomer;
         option.textContent = customer.name;
         customerSelect.appendChild(option);
     });
+
+    // Limpiar opciones existentes excepto la primera
+    while (sellerSelect.options.length > 1) {
+        sellerSelect.remove(1);
+    }
 
     // Llenar combo de vendedores
     sellers.forEach(seller => {
@@ -312,30 +283,6 @@ btnCancel.addEventListener('click', function() {
 // Inicialización
 document.addEventListener('DOMContentLoaded', function() {
     loadData();
-    populateSelects();
-    populateProductSelect();
-    
-    // Si no hay datos de prueba, crear algunos
-    if (customers.length === 0) {
-        customers.push(new Customer('Juan Pérez', 'juan@example.com', '123456789', 'Calle 1'));
-        customers.push(new Customer('María López', 'maria@example.com', '987654321', 'Calle 2'));
-        localStorage.setItem('customers', JSON.stringify(customers));
-    }
-    
-    if (sellers.length === 0) {
-        sellers.push(new Seller('Carlos Gómez', 'carlos@example.com', '111222333', 'Calle 3'));
-        sellers.push(new Seller('Ana Martínez', 'ana@example.com', '444555666', 'Calle 4'));
-        localStorage.setItem('sellers', JSON.stringify(sellers));
-    }
-    
-    if (products.length === 0) {
-        products.push(new Product('Laptop', 1200.00, 10));
-        products.push(new Product('Teléfono', 500.00, 20));
-        products.push(new Product('Tablet', 300.00, 15));
-        localStorage.setItem('products', JSON.stringify(products));
-    }
-    
-    // Volver a llenar los selects con los datos actualizados
     populateSelects();
     populateProductSelect();
 });
